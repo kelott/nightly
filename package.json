@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/kelott/nightly/issues"
   },
-  "homepage": "https://github.com/kelott/nightly#readme"
+  "homepage": "https://github.com/kelott/nightly#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
