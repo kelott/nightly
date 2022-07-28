@@ -1,12 +1,13 @@
 // @ts-nocheck
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import './App.css';
-import { Home } from './components/Home';
 import { Navbar } from './components/Navbar';
 import { getAllProducts } from './utils/apiService';
 
 function App() {
   const [products, setProducts] = useState([]);
+
   useEffect(() => {
     (async () => {
       try {
@@ -19,10 +20,10 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div>
       <Navbar />
-      <Home products={products} setProducts={setProducts} />
-    </>
+      <Outlet context={products} />
+    </div>
   );
 }
 

@@ -1,5 +1,6 @@
 // @ts-nocheck
 
+import { Link } from 'react-router-dom';
 import { ProductListItem } from './ProductListItem';
 
 export function ProductList({ products }) {
@@ -7,9 +8,11 @@ export function ProductList({ products }) {
     <div>
       <ul>
         {products.map((product) => (
-          <li id={product.id}>
-            <ProductListItem product={product} />
-          </li>
+          <Link to={`product/${product.id}`}>
+            <li key={product.id}>
+              <ProductListItem product={product} />
+            </li>
+          </Link>
         ))}
       </ul>
     </div>

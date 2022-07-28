@@ -17,6 +17,7 @@ export async function getOneProduct(productId: number) {
   try {
     const response = await fetch(baseUrl + productsUrlEnd + `/${productId}`, getHtml);
     const result = await response.json();
+    console.log('getOneProduct()');
     return result;
   } catch (e) {
     console.log(e);
