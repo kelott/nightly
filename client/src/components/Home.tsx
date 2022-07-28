@@ -1,9 +1,11 @@
 // @ts-nocheck
 
-export function Home() {
+import { ProductList } from './ProductList';
+
+export function Home({ products, setProducts }) {
   return (
     <div>
-      <h1>Home</h1>
+      <ProductList products={products} />
     </div>
   );
 }

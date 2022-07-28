@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Home />
+      <Home products={products} setProducts={setProducts} />
     </>
   );
 }
