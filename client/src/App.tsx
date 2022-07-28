@@ -1,14 +1,18 @@
+// @ts-nocheck
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { getAllProducts } from './utils/apiService';
-import { Products } from './utils/types';
 
 function App() {
-  const [products, setProducts] = useState<Products | []>([]);
+  const [products, setProducts] = useState([]);
   useEffect(() => {
     (async () => {
-      const allProducts = await getAllProducts();
-      setProducts(allProducts);
+      try {
+        const allProducts = await getAllProducts();
+        setProducts(allProducts);
+      } catch (e) {
+        console.log(e);
+      }
     })();
   }, []);
 
