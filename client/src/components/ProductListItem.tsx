@@ -1,6 +1,15 @@
 // @ts-nocheck
 
-export function ProductListItem({ product }) {
+import { useEffect, useState } from 'react';
+
+export function ProductListItem({ product, ratingData }) {
+  const [rating, setRating] = useState({});
+
+  useEffect(() => {
+    setRating(ratingData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div>
       <div>
@@ -8,8 +17,9 @@ export function ProductListItem({ product }) {
       </div>
       <div>
         <p>{product.title}</p>
-        {/* Todo: Star rating */}
-        <p>{product.price}</p>
+        <p>{rating.rate} Stars</p>
+        <p>{rating.count} Counts</p>
+        <p>€{product.price}</p>
       </div>
     </div>
   );

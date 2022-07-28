@@ -28,7 +28,7 @@ export function Product() {
       <span>{rating.count}</span>
       <p>{product.title}</p>
       <img src={product.image} alt="product" />
-      <p>{'€' + product.price}</p>
+      <p>€{product.price}</p>
       <button>Add to Cart</button>
       <p>{product.description}</p>
     </div>
