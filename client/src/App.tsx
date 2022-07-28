@@ -1,6 +1,8 @@
 // @ts-nocheck
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import { Home } from './components/Home';
+import { Navbar } from './components/Navbar';
 import { getAllProducts } from './utils/apiService';
 
 function App() {
@@ -18,11 +20,8 @@ function App() {
 
   return (
     <>
-      <ul>
-        {products.map((product) => (
-          <li>{product.title}</li>
-        ))}
-      </ul>
+      <Navbar />
+      <Home />
     </>
   );
 }
