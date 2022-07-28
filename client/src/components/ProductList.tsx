@@ -1,9 +1,17 @@
 // @ts-nocheck
 
-export function ProductList() {
+import { ProductListItem } from './ProductListItem';
+
+export function ProductList({ products }) {
   return (
     <div>
-      <h1>ProductList</h1>
+      <ul>
+        {products.map((product) => (
+          <li id={product.id}>
+            <ProductListItem product={product} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

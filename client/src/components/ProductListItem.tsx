@@ -1,9 +1,16 @@
 // @ts-nocheck
 
-export function ProductListItems() {
+export function ProductListItem({ product }) {
   return (
     <div>
-      <h1>ListItem</h1>
+      <div>
+        <img src={product.image} alt="product" />
+      </div>
+      <div>
+        <p>{product.title}</p>
+        {/* Todo: Star rating */}
+        <p>{product.price}</p>
+      </div>
     </div>
   );
 }
