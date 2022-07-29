@@ -1,0 +1,21 @@
+.product-img {
+  width: 28vw;
+  height: auto;
+}
+
+.p-list-item {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  height: fit-content;
+  align-items: center;
+}
+
+.product-img-container {
+  width: fit-content;
+  height: fit-content;
+}
+
+.p-description {
+  padding-left: 15px;
+}

@@ -1,12 +1,12 @@
 // @ts-nocheck
 
-import './Navbar.css';
+import NavbarStyle from './Navbar.css';
 import { slide as Menu } from 'react-burger-menu';
 import { Link } from 'react-router-dom';
 
 export function Navbar({ categories }) {
   return (
-    <div className="navbar">
+    <div style={NavbarStyle} className="navbar">
       <div className="logo-bar">
         <div className="logo-left">
           <Menu>
@@ -32,11 +32,8 @@ export function Navbar({ categories }) {
         <input name="search" />
         <button>Magnifier</button>
       </form>
-      <div className="cat-bar">
-        <ul>
-          <li>Best sellers</li>
-        </ul>
-      </div>
+      {/* cat-bar is only for styling purposes */}
+      <div className="cat-bar"></div>
     </div>
   );
 }

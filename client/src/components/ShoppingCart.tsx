@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { addToCart, getCart, removeFromCart } from '../utils/ShoppingCartStorage';
 import { ShoppingCartItem } from './ShoppingCartItem';
+import ShoppingCartStyle from './ShoppingCart.css';
 
 export function ShoppingCart() {
   const { shoppingCart, setShoppingCart } = useOutletContext();
@@ -26,7 +27,7 @@ export function ShoppingCart() {
   }
 
   return (
-    <div>
+    <div style={ShoppingCartStyle} className="shoppingcart">
       <h2>Subtotal</h2>
       {Object.keys(shoppingCart).length === 0 ? (
         <p>Shopping cart is empty</p>

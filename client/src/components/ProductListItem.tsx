@@ -1,6 +1,7 @@
 // @ts-nocheck
 
 import { useEffect, useState } from 'react';
+import ProductListItemStyle from './ProductListItem.css';
 
 export function ProductListItem({ product, ratingData }) {
   const [rating, setRating] = useState({});
@@ -11,11 +12,11 @@ export function ProductListItem({ product, ratingData }) {
   }, []);
 
   return (
-    <div>
-      <div>
-        <img src={product.image} alt="product" />
+    <div style={ProductListItemStyle} className="p-list-item">
+      <div className="product-img-container">
+        <img className="product-img" src={product.image} alt="product" />
       </div>
-      <div>
+      <div className="p-description">
         <p>{product.title}</p>
         <p>{rating.rate} Stars</p>
         <p>{rating.count} Counts</p>

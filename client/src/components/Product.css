@@ -1,0 +1,36 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.rating {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.rating span {
+  padding-right: 4vw;
+}
+
+.product img {
+  height: 40vh;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.top {
+  border: 4px solid rgb(174, 174, 174);
+  border-left: 0;
+  border-right: 0;
+}
+
+.product button {
+  width: 100%;
+  height: 45px;
+  background-color: rgb(245, 201, 28);
+  border-style: none;
+  border-radius: 10px;
+}
