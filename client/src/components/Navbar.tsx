@@ -1,14 +1,26 @@
 // @ts-nocheck
+import './Navbar.css';
+import { slide as Menu } from 'react-burger-menu';
+
 export function Navbar() {
   return (
     <div className="navbar">
       <div className="logo-bar">
         <div className="logo-left">
-          <button id="hamburger">Cart</button>
+          <Menu>
+            {/* Todo: put react-router links in href */}
+            <a id="home" className="menu-item" href="/">
+              Home
+            </a>
+            <hr />
+            <a id="cat" className="menu-item" href="/">
+              Category
+            </a>
+          </Menu>
           {/* Todo: Insert logo here */}
         </div>
         <div className="logo-right">
-          <button id="cart">Ham</button>
+          <button id="cart">Cart</button>
         </div>
       </div>
       <form className="search">
