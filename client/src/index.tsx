@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Home } from './components/Home';
 import { Product } from './components/Product';
+import { Category } from './components/Category';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -17,6 +18,7 @@ root.render(
         <Route path="/" element={<App />}>
           <Route index element={<Home />}></Route>
           <Route path="product/:productId" element={<Product />}></Route>
+          <Route path="product/category/:categoryName" element={<Category />}></Route>
         </Route>
       </Routes>
     </React.StrictMode>

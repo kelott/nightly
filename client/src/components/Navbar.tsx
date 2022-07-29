@@ -1,21 +1,25 @@
 // @ts-nocheck
+
 import './Navbar.css';
 import { slide as Menu } from 'react-burger-menu';
+import { Link } from 'react-router-dom';
 
-export function Navbar() {
+export function Navbar({ categories }) {
   return (
     <div className="navbar">
       <div className="logo-bar">
         <div className="logo-left">
           <Menu>
-            {/* Todo: put react-router links in href */}
-            <a id="home" className="menu-item" href="/">
+            {/* Todo: put react-router links in */}
+            <Link id="home" className="menu-item" to={'/'}>
               Home
-            </a>
+            </Link>
             <hr />
-            <a id="cat" className="menu-item" href="/">
-              Category
-            </a>
+            {categories.map((category) => (
+              <Link id={category} className="menu-item" to={`product/category/${category}`}>
+                {category}
+              </Link>
+            ))}
           </Menu>
           {/* Todo: Insert logo here */}
         </div>
