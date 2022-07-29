@@ -8,8 +8,8 @@ export function ProductList({ products }) {
     <div>
       <ul>
         {products.map((product) => (
-          <Link to={`product/${product.id}`}>
-            <li key={product.id}>
+          <Link to={`product/${product.id}`} key={product.id}>
+            <li>
               <ProductListItem product={product} ratingData={product.rating} />
             </li>
           </Link>

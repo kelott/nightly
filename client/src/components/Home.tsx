@@ -4,10 +4,10 @@ import { useOutletContext } from 'react-router-dom';
 import { ProductList } from './ProductList';
 
 export function Home() {
-  const products = useOutletContext();
+  const { products, setShoppingCart } = useOutletContext();
   return (
     <div>
-      <ProductList products={products} />
+      <ProductList products={products} setShoppingCart={setShoppingCart} />
     </div>
   );
 }

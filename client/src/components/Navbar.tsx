@@ -10,13 +10,12 @@ export function Navbar({ categories }) {
       <div className="logo-bar">
         <div className="logo-left">
           <Menu>
-            {/* Todo: put react-router links in */}
             <Link id="home" className="menu-item" to={'/'}>
               Home
             </Link>
             <hr />
             {categories.map((category) => (
-              <Link id={category} className="menu-item" to={`product/category/${category}`}>
+              <Link key={category} className="menu-item" to={`product/category/${category}`}>
                 {category}
               </Link>
             ))}
@@ -24,7 +23,9 @@ export function Navbar({ categories }) {
           {/* Todo: Insert logo here */}
         </div>
         <div className="logo-right">
-          <button id="cart">Cart</button>
+          <Link id="cart" to={'shoppingcart'}>
+            <button>Cart</button>
+          </Link>
         </div>
       </div>
       <form className="search">

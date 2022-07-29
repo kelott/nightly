@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Home } from './components/Home';
 import { Product } from './components/Product';
 import { Category } from './components/Category';
+import { ShoppingCart } from './components/ShoppingCart';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -19,6 +20,7 @@ root.render(
           <Route index element={<Home />}></Route>
           <Route path="product/:productId" element={<Product />}></Route>
           <Route path="product/category/:categoryName" element={<Category />}></Route>
+          <Route path="shoppingcart" element={<ShoppingCart />}></Route>
         </Route>
       </Routes>
     </React.StrictMode>
