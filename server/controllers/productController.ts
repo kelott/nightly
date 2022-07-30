@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-const { Product, Rating, addManyProducts } = require('../models/product.ts');
+const { Product } = require('../models/product.ts');
 
 exports.getAllProducts = async (ctx) => {
   try {

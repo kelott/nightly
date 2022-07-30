@@ -1,5 +1,7 @@
 // @ts-nocheck
 
+const Category = require('../models/category.ts');
+
 exports.getAllCategories = async (ctx) => {
   try {
     ctx.body = await Category.findAll();
