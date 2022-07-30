@@ -10,7 +10,11 @@ const sequelize = require('./models/index.ts');
 const router = require('./router.ts');
 const { HOST, PORT } = require('./utils/config.ts');
 
-app.use(cors());
+app.use(
+  cors({
+    origin: '*',
+  })
+);
 app.use(bodyParser());
 // Todo: Serve static files
 app.use(router.routes());
@@ -23,6 +27,6 @@ app.use(router.routes());
       console.log(`Listening on ${HOST}:${PORT}`);
     });
   } catch (e) {
-    console.log('Database connection failed, e');
+    console.log('Database connection failed', e);
   }
 })();

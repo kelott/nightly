@@ -3,7 +3,7 @@
 const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize('postgres://postgres:123@localhost/nightly', {
-  logging: console.log,
+  logging: false,
 });
 
 module.exports = sequelize;
