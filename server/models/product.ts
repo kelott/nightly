@@ -15,7 +15,7 @@ const Product = sequelize.define('Product', {
     type: DataTypes.FLOAT,
   },
   description: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(1234),
   },
   category: {
     type: DataTypes.STRING,

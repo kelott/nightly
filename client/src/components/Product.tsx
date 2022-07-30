@@ -16,7 +16,7 @@ export function Product() {
       try {
         const oneProduct = await getOneProduct(params.productId);
         setProduct(oneProduct);
-        setRating(oneProduct.rating);
+        setRating({ rate: oneProduct.rate, count: oneProduct.count });
       } catch (e) {
         console.log(e);
       }

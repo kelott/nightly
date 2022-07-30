@@ -13,6 +13,6 @@ router.get('/products/categories', getAllCategories);
 router.get('/products/category/:categoryName', getProductsOfCategory);
 
 router.get('/shoppingcart', getShoppingCart);
-router.post('/shoppingcart/:productId', addToShoppingCart);
+router.post('/shoppingcart/', addToShoppingCart);
 
 module.exports = router;
