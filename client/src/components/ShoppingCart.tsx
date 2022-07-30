@@ -1,18 +1,12 @@
 // @ts-nocheck
 
-import { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { addToCart, getCart, removeFromCart } from '../utils/ShoppingCartStorage';
+import { addToCart, removeFromCart } from '../utils/ShoppingCartStorage';
 import { ShoppingCartItem } from './ShoppingCartItem';
 import ShoppingCartStyle from './ShoppingCart.css';
 
 export function ShoppingCart() {
   const { shoppingCart, setShoppingCart } = useOutletContext();
-
-  useEffect(() => {
-    const productsInCart = getCart();
-    setShoppingCart(productsInCart);
-  });
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -37,12 +31,12 @@ export function ShoppingCart() {
             <li key={key}>
               <ShoppingCartItem cartItem={shoppingCart[key]} />
               <form onSubmit={(e) => handleSubmit(e)}>
-                <button onClick={(e) => handleClick(e, key)} name="plus">
+                <button onClick={(e) => handleClick(e, shoppingCart[key])} name="plus">
                   +
                 </button>
                 <label>Items</label>
                 <input name="items" className="inputs"></input>
-                <button onClick={(e) => handleClick(e, key)} name="minus">
+                <button onClick={(e) => handleClick(e, shoppingCart[key])} name="minus">
                   -
                 </button>
               </form>

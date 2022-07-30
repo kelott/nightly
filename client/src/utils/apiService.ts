@@ -59,12 +59,12 @@ export async function getAllCartItems() {
 
 export async function addCartItem(productToAdd) {
   try {
-    const response = await fetch(localBaseUrl + shoppingCartUrlEnd, {
+    const data = await fetch(localBaseUrl + shoppingCartUrlEnd, {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(productToAdd),
     });
-    const result = await response.json();
+    const result = await data.json();
     return result;
   } catch (e) {
     console.log(e);

@@ -1,13 +1,12 @@
 // @ts-nocheck
 
-const ShoppingCart = require('../models/shoppingCart.ts');
+const { ShoppingCart } = require('../models/shoppingCart');
 
 exports.getShoppingCart = async (ctx) => {
   try {
     ctx.body = await ShoppingCart.findAll();
-    ctx.status = 200;
   } catch (e) {
-    console.log(e);
+    console.log(e.message);
     ctx.status = 500;
   }
 };
@@ -15,7 +14,7 @@ exports.getShoppingCart = async (ctx) => {
 exports.addToShoppingCart = async (ctx) => {
   try {
     await ShoppingCart.create(ctx.request.body);
-    ctx.status = 201;
+    ctx.body = ctx.request.body;
   } catch (e) {
     console.log(e);
     ctx.status = 500;

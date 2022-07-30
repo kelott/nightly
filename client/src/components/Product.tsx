@@ -1,14 +1,14 @@
 // @ts-nocheck
 
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { getOneProduct } from '../utils/apiService';
-import { addToCart } from '../utils/ShoppingCartStorage';
+import { Link, useOutletContext, useParams } from 'react-router-dom';
+import { addCartItem, getAllCartItems, getOneProduct } from '../utils/apiService';
 import ProductStyling from './Product.css';
 
 export function Product() {
   const [product, setProduct] = useState({});
   const [rating, setRating] = useState({});
+  const { shoppingCart, setShoppingCart } = useOutletContext();
   const params = useParams();
 
   useEffect(() => {
@@ -24,8 +24,14 @@ export function Product() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function handleClick() {
-    return addToCart(product);
+  async function handleClick() {
+    try {
+      const cartItems = await addCartItem(product);
+      console.log(cartItems);
+      setShoppingCart([...shoppingCart, cartItems]);
+    } catch (e) {
+      console.log(e.message);
+    }
   }
 
   return (

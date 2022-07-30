@@ -16,16 +16,14 @@ import AppStyle from './App.css';
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <BrowserRouter>
-    <React.StrictMode>
-      <Routes>
-        <Route path="/" element={<App style={AppStyle} />}>
-          <Route index element={<Home style={HomeStyle} />}></Route>
-          <Route path="product/:productId" element={<Product />}></Route>
-          <Route path="product/category/:categoryName" element={<Category />}></Route>
-          <Route path="shoppingcart" element={<ShoppingCart />}></Route>
-        </Route>
-      </Routes>
-    </React.StrictMode>
+    <Routes>
+      <Route path="/" element={<App style={AppStyle} />}>
+        <Route index element={<Home style={HomeStyle} />}></Route>
+        <Route path="product/:productId" element={<Product />}></Route>
+        <Route path="product/category/:categoryName" element={<Category />}></Route>
+        <Route path="shoppingcart" element={<ShoppingCart />}></Route>
+      </Route>
+    </Routes>
   </BrowserRouter>
 );
 

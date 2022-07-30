@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-const Category = require('../models/category.ts');
+const { Category } = require('../models/category.ts');
 const { populateDbCategories } = require('../utils/populateDb');
 
 exports.getAllCategories = async (ctx) => {

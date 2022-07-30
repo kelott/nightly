@@ -3,30 +3,26 @@ import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import './App.css';
 import { Navbar } from './components/Navbar';
-import { getAllCategories, getAllProducts } from './utils/apiService';
-import { getCart } from './utils/ShoppingCartStorage';
+import { getAllCartItems, getAllCategories, getAllProducts } from './utils/apiService';
 
 function App() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [shoppingCart, setShoppingCart] = useState({});
+  const [shoppingCart, setShoppingCart] = useState([]);
 
   useEffect(() => {
     (async () => {
       try {
         const allProducts = await getAllProducts();
         const allCategories = await getAllCategories();
+        const allCartItems = await getAllCartItems();
         setProducts(allProducts);
         setCategories(allCategories);
+        setShoppingCart(allCartItems);
       } catch (e) {
         console.log(e);
       }
     })();
-  }, []);
-
-  useEffect(() => {
-    const productsInCart = getCart();
-    setShoppingCart(productsInCart);
   }, []);
 
   return (
