@@ -6,11 +6,11 @@ const { getAllProducts, getOneProduct, fetchProducts } = require('./controllers/
 const { getAllCategories, getProductsOfCategory } = require('./controllers/categoryController.ts');
 const { getShoppingCart, addToShoppingCart, removeFromShoppingCart, changeShoppingCart } = require('./controllers/shoppingCartController.ts');
 
-router.get('/products', getAllProducts);
-router.get('/products/:productId', getOneProduct);
-
 router.get('/products/categories', getAllCategories);
 router.get('/products/category/:categoryName', getProductsOfCategory);
+
+router.get('/products', getAllProducts);
+router.get('/products/:productId', getOneProduct);
 
 router.get('/shoppingcart', getShoppingCart);
 router.post('/shoppingcart', addToShoppingCart);

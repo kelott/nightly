@@ -1,7 +1,6 @@
 // @ts-nocheck
 
 const { Product } = require('../models/product.ts');
-const { populateDbProducts } = require('../utils/populateDb');
 
 exports.getAllProducts = async (ctx) => {
   try {

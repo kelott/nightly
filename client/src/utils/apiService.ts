@@ -1,6 +1,5 @@
 // @ts-nocheck
 const localBaseUrl = 'http://localhost:4000';
-const baseUrl = 'https://fakestoreapi.com';
 const productsUrlEnd = '/products';
 const categoriesUrlEnd = '/products/categories';
 const categoryUrlEnd = '/products/category';
@@ -29,7 +28,7 @@ export async function getOneProduct(productId: number) {
 
 export async function getAllCategories() {
   try {
-    const response = await fetch(baseUrl + categoriesUrlEnd, getHtml);
+    const response = await fetch(localBaseUrl + categoriesUrlEnd, getHtml);
     const result = await response.json();
     return result;
   } catch (e) {
@@ -39,7 +38,7 @@ export async function getAllCategories() {
 
 export async function getProductsOfCategory(category: string) {
   try {
-    const response = await fetch(baseUrl + categoryUrlEnd + `/${category}`, getHtml);
+    const response = await fetch(localBaseUrl + categoryUrlEnd + `/${category}`, getHtml);
     const result = await response.json();
     return result;
   } catch (e) {

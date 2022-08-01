@@ -4,9 +4,8 @@ const sequelize = require('./index.ts');
 const { DataTypes } = require('sequelize');
 
 const Category = sequelize.define('Category', {
-  categories: {
+  category: {
     type: DataTypes.STRING,
-    primaryKey: true,
   },
 });
 

@@ -14,9 +14,9 @@ export function Navbar({ categories }) {
               Home
             </Link>
             <hr />
-            {categories.map((category) => (
-              <Link key={category} className="menu-item" to={`product/category/${category}`}>
-                {category}
+            {categories.map((entry) => (
+              <Link key={entry.id} className="menu-item" to={`product/category/${entry.category}`}>
+                {entry.category}
               </Link>
             ))}
           </Menu>

@@ -35,7 +35,7 @@ async function popCategoriesFromJson() {
   try {
     const raw = await fs.readFile('./server/data/categories.json');
     const categoriesFromApi = JSON.parse(raw);
-    const categoriesArr = categoriesFromApi.map((categories) => ({ categories }));
+    const categoriesArr = categoriesFromApi.map((category) => ({ category }));
     await Category.bulkCreate(categoriesArr);
     console.log('Db populated with categories');
   } catch (e) {
