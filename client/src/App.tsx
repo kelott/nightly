@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useSearchParams } from 'react-router-dom';
 import './App.css';
 import { Navbar } from './components/Navbar';
 import { getAllCartItems, getAllCategories, getAllProducts } from './utils/apiService';
@@ -9,6 +9,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [shoppingCart, setShoppingCart] = useState({});
+  const [searchParams, setSearchParams] = useSearchParams();
 
   function prepCart(items) {
     const cart = {};
@@ -36,8 +37,8 @@ function App() {
 
   return (
     <div>
-      <Navbar categories={categories} />
-      <Outlet context={{ products, shoppingCart, setShoppingCart }} />
+      <Navbar categories={categories} searchParams={searchParams} setSearchParams={setSearchParams} />
+      <Outlet context={{ products, shoppingCart, setShoppingCart, categories }} />
     </div>
   );
 }

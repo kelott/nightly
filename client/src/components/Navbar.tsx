@@ -5,7 +5,7 @@ import { slide as Menu } from 'react-burger-menu';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-export function Navbar({ categories }) {
+export function Navbar({ categories, searchParams, setSearchParams }) {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleOpen() {
@@ -35,9 +35,19 @@ export function Navbar({ categories }) {
           </Link>
         </div>
       </div>
-      <form className="search">
-        <input name="search" />
-        <button>Magnifier</button>
+      <form className="search-form">
+        <input
+          value={searchParams.get('filter') || ''}
+          onChange={(event) => {
+            let filter = event.target.value;
+            if (filter) {
+              setSearchParams({ filter });
+            } else {
+              setSearchParams({});
+            }
+          }}
+        />
+        <button type="submit">Magnifier</button>
       </form>
       {/* style-bar is only for styling purposes */}
       <div className="style-bar"></div>
