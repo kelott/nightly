@@ -8,7 +8,16 @@ import { getAllCartItems, getAllCategories, getAllProducts } from './utils/apiSe
 function App() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [shoppingCart, setShoppingCart] = useState([]);
+  const [shoppingCart, setShoppingCart] = useState({});
+
+  function prepCart(items) {
+    const cart = {};
+    for (const item of items) {
+      const { productId, cartcount } = item;
+      cart[productId] = { cartcount };
+    }
+    return cart;
+  }
 
   useEffect(() => {
     (async () => {
@@ -18,7 +27,7 @@ function App() {
         const allCartItems = await getAllCartItems();
         setProducts(allProducts);
         setCategories(allCategories);
-        setShoppingCart(allCartItems);
+        setShoppingCart(prepCart(allCartItems));
       } catch (e) {
         console.log(e);
       }

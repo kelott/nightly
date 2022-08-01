@@ -70,3 +70,17 @@ export async function addCartItem(productToAdd) {
     console.log(e);
   }
 }
+
+export async function deleteCartItem(productToDelete) {
+  try {
+    const data = await fetch(localBaseUrl + shoppingCartUrlEnd, {
+      method: 'DELETE',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify(productToDelete),
+    });
+    const result = await data.json();
+    return result;
+  } catch (e) {
+    console.log(e);
+  }
+}

@@ -1,24 +1,33 @@
 // @ts-nocheck
 
 import { useOutletContext } from 'react-router-dom';
-import { addToCart, removeFromCart } from '../utils/ShoppingCartStorage';
 import { ShoppingCartItem } from './ShoppingCartItem';
 import ShoppingCartStyle from './ShoppingCart.css';
+import { useEffect, useState } from 'react';
 
 export function ShoppingCart() {
   const { shoppingCart, setShoppingCart } = useOutletContext();
+  const { products } = useOutletContext();
+  const [cartProduct, setCartProduct] = useState({});
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log(e.target);
-    return;
+  function generateCartProducts() {
+    const cartProducts = {};
+    products
+      .filter((product) => product.id in shoppingCart)
+      .map((item) => {
+        const { id, ...rest } = item;
+        const currentItem = shoppingCart[id];
+        return (cartProducts[id] = { ...rest, cartcount: currentItem.cartcount });
+      });
+    console.log(cartProducts);
+
+    return cartProducts;
   }
 
-  function handleClick(e, key) {
-    e.preventDefault();
-    if (e.target.name === 'plus') return setShoppingCart(addToCart({ id: key }));
-    else return setShoppingCart(removeFromCart({ id: key }));
-  }
+  useEffect(() => {
+    setCartProduct(generateCartProducts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shoppingCart]);
 
   return (
     <div style={ShoppingCartStyle} className="shoppingcart">
@@ -27,19 +36,9 @@ export function ShoppingCart() {
         <p>Shopping cart is empty</p>
       ) : (
         <ul>
-          {Object.keys(shoppingCart).map((key) => (
+          {Object.keys(cartProduct).map((key) => (
             <li key={key}>
-              <ShoppingCartItem cartItem={shoppingCart[key]} />
-              <form onSubmit={(e) => handleSubmit(e)}>
-                <button onClick={(e) => handleClick(e, shoppingCart[key])} name="plus">
-                  +
-                </button>
-                <label>Items</label>
-                <input name="items" className="inputs"></input>
-                <button onClick={(e) => handleClick(e, shoppingCart[key])} name="minus">
-                  -
-                </button>
-              </form>
+              <ShoppingCartItem cartItem={cartProduct[key]} itemId={key} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} />
             </li>
           ))}
         </ul>

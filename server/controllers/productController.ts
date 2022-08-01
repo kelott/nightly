@@ -27,14 +27,6 @@ exports.getOneProduct = async (ctx) => {
   }
 };
 
-// const popAllProducts = async (productsFromApi) => {
-//   try {
-//     await Product.bulkCreate(productsFromApi);
-//   } catch (e) {
-//     console.log(e.message);
-//   }
-// };
-
 (async () => {
   try {
     const productsFromApi = await populateDbProducts();

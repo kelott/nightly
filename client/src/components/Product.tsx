@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Link, useOutletContext, useParams } from 'react-router-dom';
-import { addCartItem, getAllCartItems, getOneProduct } from '../utils/apiService';
+import { addCartItem, getOneProduct } from '../utils/apiService';
 import ProductStyling from './Product.css';
 
 export function Product() {
@@ -24,11 +24,18 @@ export function Product() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  function addToCart(productId) {
+    if (productId in shoppingCart) {
+      const item = shoppingCart[productId];
+      return { ...shoppingCart, [productId]: { cartcount: (item.cartcount += 1) } };
+    }
+    return { ...shoppingCart, [productId]: { cartcount: 1 } };
+  }
+
   async function handleClick() {
     try {
-      const cartItems = await addCartItem(product);
-      console.log(cartItems);
-      setShoppingCart([...shoppingCart, cartItems]);
+      await addCartItem({ productId: product.id, cartcount: 1 });
+      setShoppingCart(addToCart(product.id));
     } catch (e) {
       console.log(e.message);
     }

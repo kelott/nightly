@@ -5,7 +5,6 @@ import ProductListItemStyle from './ProductListItem.css';
 
 export function ProductListItem({ product }) {
   const [rating, setRating] = useState({});
-  // const ratingData = { rate: product.rate, count: product.rate };
   useEffect(() => {
     setRating({ rate: product.rate, count: product.rate });
     // eslint-disable-next-line react-hooks/exhaustive-deps

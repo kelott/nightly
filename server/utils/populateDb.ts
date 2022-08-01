@@ -14,7 +14,7 @@ exports.populateDbProducts = async function () {
     const result = await response.json();
     return result;
   } catch (e) {
-    console.log(e);
+    console.log('product fetch failed', e.message);
   }
 };
 
@@ -24,6 +24,6 @@ exports.populateDbCategories = async function () {
     const result = await response.json();
     return result;
   } catch (e) {
-    console.log(e);
+    console.log('category fetch failed', e.message);
   }
 };
