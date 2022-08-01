@@ -71,6 +71,20 @@ export async function addCartItem(productToAdd) {
   }
 }
 
+export async function modifyCartItem(productToModify) {
+  try {
+    const data = await fetch(localBaseUrl + shoppingCartUrlEnd, {
+      method: 'PUT',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify(productToModify),
+    });
+    const result = await data.json();
+    return result;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export async function deleteCartItem(productToDelete) {
   try {
     const data = await fetch(localBaseUrl + shoppingCartUrlEnd, {

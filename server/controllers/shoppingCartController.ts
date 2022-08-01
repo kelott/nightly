@@ -26,11 +26,12 @@ exports.addToShoppingCart = async (ctx) => {
 
 exports.changeShoppingCart = async (ctx) => {
   try {
-    const [productId, cartcount] = ctx.request.body;
-    ctx.body = await ShoppingCart.update({ cartcount: cartcount }, { where: { productId: productId } });
+    const { productId, cartcount } = ctx.request.body;
+    const updated = await ShoppingCart.update({ cartcount: cartcount }, { where: { productId: productId } });
     ctx.status = 201;
+    ctx.body = updated;
   } catch (e) {
-    console.log(e.message);
+    console.log(e);
     ctx.status = 500;
   }
 };

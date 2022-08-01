@@ -21,7 +21,7 @@ app.use(router.routes());
 
 (async () => {
   try {
-    sequelize.sync(/* { force: true } */);
+    sequelize.sync();
     console.log('Connected to database');
     app.listen(PORT, () => {
       console.log(`Listening on ${HOST}:${PORT}`);
