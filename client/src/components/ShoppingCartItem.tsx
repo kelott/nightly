@@ -40,6 +40,7 @@ export function ShoppingCartItem({ cartItem, itemId, shoppingCart, setShoppingCa
 
   function handleChange(e) {
     console.log(e.target.value);
+
     setInputVal(e.target.value);
   }
 
@@ -58,7 +59,7 @@ export function ShoppingCartItem({ cartItem, itemId, shoppingCart, setShoppingCa
         <button onClick={(e) => handleClickPlus(e, itemId)} name="plus">
           +
         </button>
-        <input name="items" className="inputs" val={inputVal} onChange={handleChange} defaultValue={inputVal}></input>
+        <input name="items" className="inputs" on={handleChange} defaultValue={inputVal} key={inputVal} type="number" value={inputVal}></input>
         <button onClick={(e) => handleClickMinus(e, itemId)} name="minus">
           -
         </button>
