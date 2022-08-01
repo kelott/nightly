@@ -7,7 +7,7 @@ exports.getAllProducts = async (ctx) => {
   try {
     ctx.body = await Product.findAll();
   } catch (e) {
-    console.log(e);
+    console.log(e.message);
     ctx.status = 500;
   }
 };
@@ -22,7 +22,7 @@ exports.getOneProduct = async (ctx) => {
     });
     ctx.status = 200;
   } catch (e) {
-    console.log(e);
+    console.log(e.message);
     ctx.status = 500;
   }
 };

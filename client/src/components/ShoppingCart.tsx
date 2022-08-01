@@ -19,8 +19,6 @@ export function ShoppingCart() {
         const currentItem = shoppingCart[id];
         return (cartProducts[id] = { ...rest, cartcount: currentItem.cartcount });
       });
-    console.log(cartProducts);
-
     return cartProducts;
   }
 

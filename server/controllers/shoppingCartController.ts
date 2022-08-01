@@ -15,8 +15,9 @@ exports.getShoppingCart = async (ctx) => {
 
 exports.addToShoppingCart = async (ctx) => {
   try {
-    await ShoppingCart.create(ctx.request.body);
+    const addedItem = await ShoppingCart.create(ctx.request.body);
     ctx.status = 201;
+    ctx.body = addedItem;
   } catch (e) {
     console.log(e);
     ctx.status = 500;

@@ -14,15 +14,11 @@ export function ShoppingCartItem({ cartItem, itemId, shoppingCart, setShoppingCa
       if (e.target.name === 'plus') {
         await addCartItem({ productId, cartcount: 1 });
         setShoppingCart({ ...shoppingCart, [productId]: { ...cartItem, cartcount: (cartItem.cartcount += 1) } });
-        console.log(productId, ' was added to cart');
       } else {
         await deleteCartItem({ productId });
         const updatedCart = { ...shoppingCart };
-        console.log(updatedCart);
         delete updatedCart[productId];
-        console.log(updatedCart);
         setShoppingCart(updatedCart);
-        console.log(productId, ' was removed from cart');
       }
     } catch (e) {
       console.log(e.message);
@@ -30,6 +26,7 @@ export function ShoppingCartItem({ cartItem, itemId, shoppingCart, setShoppingCa
   }
 
   function handleChange(e) {
+    console.log(e.target.value);
     setInputVal(e.target.value);
   }
 
@@ -44,11 +41,10 @@ export function ShoppingCartItem({ cartItem, itemId, shoppingCart, setShoppingCa
           <p>€{cartItem.price}</p>
         </div>
       </div>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form>
         <button onClick={(e) => handleClick(e, itemId)} name="plus">
           +
         </button>
-        <label>Items</label>
         <input name="items" className="inputs" val={inputVal} onChange={handleChange}></input>
         <button onClick={(e) => handleClick(e, itemId)} name="minus">
           -
