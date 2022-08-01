@@ -27,14 +27,3 @@ exports.getProductsOfCategory = async (ctx) => {
     ctx.status = 500;
   }
 };
-
-(async () => {
-  try {
-    const categoriesFromApi = await populateDbCategories();
-    const categoriesArr = categoriesFromApi.map((categories) => ({ categories }));
-    await Category.bulkCreate(categoriesArr);
-    console.log('Db populated with categories');
-  } catch (e) {
-    console.log('Db could not be populated with categories:', e.message);
-  }
-})();
