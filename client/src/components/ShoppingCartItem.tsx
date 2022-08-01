@@ -14,6 +14,7 @@ export function ShoppingCartItem({ cartItem, itemId, shoppingCart, setShoppingCa
       if (e.target.name === 'plus') {
         await addCartItem({ productId, cartcount: 1 });
         setShoppingCart({ ...shoppingCart, [productId]: { ...cartItem, cartcount: (cartItem.cartcount += 1) } });
+        setInputVal(inputVal + 1);
       } else {
         await deleteCartItem({ productId });
         const updatedCart = { ...shoppingCart };
@@ -45,7 +46,7 @@ export function ShoppingCartItem({ cartItem, itemId, shoppingCart, setShoppingCa
         <button onClick={(e) => handleClick(e, itemId)} name="plus">
           +
         </button>
-        <input name="items" className="inputs" val={inputVal} onChange={handleChange}></input>
+        <input name="items" className="inputs" val={inputVal} onChange={handleChange} defaultValue={inputVal}></input>
         <button onClick={(e) => handleClick(e, itemId)} name="minus">
           -
         </button>

@@ -19,7 +19,18 @@ exports.addToShoppingCart = async (ctx) => {
     ctx.status = 201;
     ctx.body = addedItem;
   } catch (e) {
-    console.log(e);
+    console.log(e.message);
+    ctx.status = 500;
+  }
+};
+
+exports.changeShoppingCart = async (ctx) => {
+  try {
+    const [productId, cartcount] = ctx.request.body;
+    ctx.body = await ShoppingCart.update({ cartcount: cartcount }, { where: { productId: productId } });
+    ctx.status = 201;
+  } catch (e) {
+    console.log(e.message);
     ctx.status = 500;
   }
 };
