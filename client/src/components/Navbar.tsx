@@ -3,19 +3,26 @@
 import NavbarStyle from './Navbar.css';
 import { slide as Menu } from 'react-burger-menu';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 export function Navbar({ categories }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  function handleOpen() {
+    setIsOpen(!isOpen);
+  }
+
   return (
     <div style={NavbarStyle} className="navbar">
       <div className="logo-bar">
         <div className="logo-left">
-          <Menu>
-            <Link id="home" className="menu-item" to={'/'}>
+          <Menu onOpen={handleOpen} onClose={handleOpen} isOpen={isOpen}>
+            <Link onClick={handleOpen} id="home" className="menu-item" to={'/'}>
               Home
             </Link>
             <hr />
             {categories.map((entry) => (
-              <Link key={entry.id} className="menu-item" to={`product/category/${entry.category}`}>
+              <Link onClick={handleOpen} key={entry.id} className="menu-item" to={`product/category/${entry.category}`}>
                 {entry.category}
               </Link>
             ))}
@@ -32,8 +39,8 @@ export function Navbar({ categories }) {
         <input name="search" />
         <button>Magnifier</button>
       </form>
-      {/* cat-bar is only for styling purposes */}
-      <div className="cat-bar"></div>
+      {/* style-bar is only for styling purposes */}
+      <div className="style-bar"></div>
     </div>
   );
 }
