@@ -35,8 +35,14 @@ export function Navbar({ categories, searchParams, setSearchParams }) {
           </Link>
         </div>
       </div>
-      <form className="search-form">
+      <form
+        className="search-form"
+        onClick={(e) => {
+          e.preventDefault();
+        }}
+      >
         <input
+          autoComplete="off"
           value={searchParams.get('filter') || ''}
           onChange={(event) => {
             let filter = event.target.value;

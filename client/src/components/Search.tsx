@@ -5,10 +5,10 @@ import { ProductList } from './ProductList';
 
 export function Search({ products }) {
   const { categories } = useOutletContext();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const searchTerm = searchParams.get('filter');
 
-  function match() {
+  function categoryMatch() {
     return categories.filter((cat) => cat.category.slice(0, searchTerm.length) === searchTerm);
   }
 
@@ -18,11 +18,12 @@ export function Search({ products }) {
 
   return (
     <div>
-      <p>Search: {searchTerm}</p>
-      {match().length ? (
+      <span>Filter: {searchTerm}</span>
+      <button onClick={() => setSearchParams('')}>clear</button>
+      {categoryMatch().length ? (
         <>
           <ul>
-            {match().map((el, index) => (
+            {categoryMatch().map((el, index) => (
               <li key={index}>
                 <Link to={`product/category/${el.category}`}>{el.category}</Link>
               </li>
