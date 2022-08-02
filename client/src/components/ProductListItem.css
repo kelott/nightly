@@ -20,3 +20,9 @@
 .p-description {
   padding-left: 15px;
 }
+
+.item-rating {
+  display: flex;
+  flex-direction: row;
+  font-size: small;
+}

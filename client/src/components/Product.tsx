@@ -51,9 +51,8 @@ export function Product() {
     <div style={ProductStyling} className="product">
       <div className="top block">
         <div className="rating">
-          {/* <span>{rating.rate}</span>
-          <span>{rating.count}</span> */}
           <StarRating rate={rating.rate} />
+          <span>{rating.count}</span>
         </div>
         <p>{product.title}</p>
         <img src={product.image} alt={product.title} />

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import ProductListItemStyle from './ProductListItem.css';
+import { StarRating } from './StarRating';
 
 export function ProductListItem({ product }) {
   const [rating, setRating] = useState({});
@@ -17,8 +18,8 @@ export function ProductListItem({ product }) {
       </div>
       <div className="p-description">
         <p>{product.title}</p>
-        <div>
-          <span>{rating.rate} Stars</span>
+        <div className="item-rating">
+          <StarRating rate={rating.rate} />
           <span>{rating.count}</span>
         </div>
         <p>€{product.price}</p>

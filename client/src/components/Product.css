@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  font-size: small;
 }
 
 .rating span {
