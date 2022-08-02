@@ -1,30 +1,37 @@
 // @ts-nocheck
 
-import { useOutletContext, useSearchParams } from 'react-router-dom';
+import { Link, useOutletContext, useSearchParams } from 'react-router-dom';
+import { ProductList } from './ProductList';
 
-export function Search(products) {
+export function Search({ products }) {
   const { categories } = useOutletContext();
   const [searchParams] = useSearchParams();
   const searchTerm = searchParams.get('filter');
 
   function match() {
-    const catStr = categories.map((str) => str.category);
-    const keyword = searchParams.get('filter');
-    const slicedKeyword = keyword?.slice(0, keyword.length);
-    return catStr.map((str) => str.slice(0, keyword.length)).filter((str) => str === slicedKeyword);
+    return categories.filter((cat) => cat.category.slice(0, searchTerm.length) === searchTerm);
+  }
+
+  function productMatch() {
+    return products.filter((product) => product.title.toLowerCase().includes(searchTerm?.toLowerCase()));
   }
 
   return (
     <div>
-      <h1>Search: {searchTerm}</h1>
+      <p>Search: {searchTerm}</p>
       {match().length ? (
-        <ul>
-          {match().map((category, index) => (
-            <li key={index}>{category}</li>
-          ))}
-        </ul>
+        <>
+          <ul>
+            {match().map((el, index) => (
+              <li key={index}>
+                <Link to={`product/category/${el.category}`}>{el.category}</Link>
+              </li>
+            ))}
+          </ul>
+          <ProductList products={productMatch()} />
+        </>
       ) : (
-        <p>no</p>
+        <ProductList products={productMatch()} />
       )}
     </div>
   );
