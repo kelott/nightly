@@ -1,8 +1,7 @@
 .product {
+  background-color: lightgray;
   display: flex;
   flex-direction: column;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 .rating {
@@ -22,9 +21,8 @@
 }
 
 .top {
-  border: 4px solid rgb(174, 174, 174);
-  border-left: 0;
-  border-right: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .product button {
@@ -33,4 +31,14 @@
   background-color: rgb(245, 201, 28);
   border-style: none;
   border-radius: 10px;
+}
+
+.block {
+  background-color: white;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.last {
+  margin-bottom: 0;
 }

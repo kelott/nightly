@@ -5,7 +5,8 @@ import { slide as Menu } from 'react-burger-menu';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { ToggleDarkMode } from './ToggleDarkMode';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 export function Navbar({ darkState, setDarkState, categories, searchParams, setSearchParams }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,8 +36,7 @@ export function Navbar({ darkState, setDarkState, categories, searchParams, setS
         </div>
         <div className="logo-right">
           <Link id="cart" to={'shoppingcart'}>
-            <ShoppingCartIcon />
-            {/* <button>Cart</button> */}
+            <ShoppingCartOutlinedIcon style={{ paddingInline: '15px' }} fontSize="large" sx={{ color: 'white' }} />
           </Link>
         </div>
       </div>
@@ -47,6 +47,7 @@ export function Navbar({ darkState, setDarkState, categories, searchParams, setS
         }}
       >
         <input
+          placeholder="Search Nightly"
           autoComplete="off"
           value={searchParams.get('filter') || ''}
           onChange={(event) => {
@@ -58,7 +59,9 @@ export function Navbar({ darkState, setDarkState, categories, searchParams, setS
             }
           }}
         />
-        <button type="submit">Magnifier</button>
+        <div className="search-btn">
+          <SearchOutlinedIcon fontSize="large" sx={{ color: 'white' }} />
+        </div>
       </form>
       {/* style-bar is only for styling purposes */}
       <div className="style-bar"></div>

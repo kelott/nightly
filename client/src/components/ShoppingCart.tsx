@@ -29,7 +29,7 @@ export function ShoppingCart() {
 
   return (
     <div style={ShoppingCartStyle} className="shoppingcart">
-      <h1>Shopping cart</h1>
+      <span>Shopping cart</span>
       {Object.keys(shoppingCart).length === 0 ? (
         <p>Shopping cart is empty</p>
       ) : (

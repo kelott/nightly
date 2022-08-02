@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Link, useOutletContext, useParams } from 'react-router-dom';
 import { addCartItem, getOneProduct, modifyCartItem } from '../utils/apiService';
 import ProductStyling from './Product.css';
+import { StarRating } from './StarRating';
 
 export function Product() {
   const [product, setProduct] = useState({});
@@ -48,19 +49,22 @@ export function Product() {
 
   return (
     <div style={ProductStyling} className="product">
-      <div className="top">
+      <div className="top block">
         <div className="rating">
-          <span>{rating.rate}</span>
-          <span>{rating.count}</span>
+          {/* <span>{rating.rate}</span>
+          <span>{rating.count}</span> */}
+          <StarRating rate={rating.rate} />
         </div>
         <p>{product.title}</p>
         <img src={product.image} alt={product.title} />
       </div>
-      <p>€{product.price}</p>
-      <Link onClick={handleClick} to={'../shoppingcart'}>
-        <button>Add to Cart</button>
-      </Link>
-      <p>{product.description}</p>
+      <div className="block last">
+        <p>€{product.price}</p>
+        <Link onClick={handleClick} to={'../shoppingcart'}>
+          <button>Add to Cart</button>
+        </Link>
+        <p>{product.description}</p>
+      </div>
     </div>
   );
 }

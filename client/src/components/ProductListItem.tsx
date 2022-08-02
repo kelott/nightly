@@ -6,7 +6,7 @@ import ProductListItemStyle from './ProductListItem.css';
 export function ProductListItem({ product }) {
   const [rating, setRating] = useState({});
   useEffect(() => {
-    setRating({ rate: product.rate, count: product.rate });
+    setRating({ rate: product.rate, count: product.count });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -17,8 +17,10 @@ export function ProductListItem({ product }) {
       </div>
       <div className="p-description">
         <p>{product.title}</p>
-        <p>{rating.rate} Stars</p>
-        <p>{rating.count} Counts</p>
+        <div>
+          <span>{rating.rate} Stars</span>
+          <span>{rating.count}</span>
+        </div>
         <p>€{product.price}</p>
       </div>
     </div>

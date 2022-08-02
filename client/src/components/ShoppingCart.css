@@ -1,3 +1,7 @@
 .shoppingcart li {
   padding: 10px;
 }
+.shoppingcart span {
+  font-family: 'Amazon Ember', Arial, sans-serif;
+  font-size: 20px;
+}

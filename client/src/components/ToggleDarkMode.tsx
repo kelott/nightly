@@ -10,12 +10,6 @@ export function ToggleDarkMode({ darkState, setDarkState }) {
 
   return (
     <div
-      /* style={{
-        display: 'flex',
-        margin: 'auto',
-        width: 'fit-content',
-        float: 'inline-start',
-      }} */
       style={{
         display: 'flex',
         paddingInline: '0.8em',

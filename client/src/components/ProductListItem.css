@@ -9,6 +9,7 @@
   width: fit-content;
   height: fit-content;
   align-items: center;
+  padding-inline: 4px;
 }
 
 .product-img-container {
