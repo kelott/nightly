@@ -10,6 +10,7 @@ function App() {
   const [categories, setCategories] = useState([]);
   const [shoppingCart, setShoppingCart] = useState({});
   const [searchParams, setSearchParams] = useSearchParams();
+  const [darkState, setDarkState] = useState({ status: true });
 
   function prepCart(items) {
     const cart = {};
@@ -37,8 +38,8 @@ function App() {
 
   return (
     <div>
-      <Navbar categories={categories} searchParams={searchParams} setSearchParams={setSearchParams} />
-      <Outlet context={{ products, shoppingCart, setShoppingCart, categories }} />
+      <Navbar darkState={darkState} setDarkState={setDarkState} categories={categories} searchParams={searchParams} setSearchParams={setSearchParams} />
+      <Outlet context={{ darkState, products, shoppingCart, setShoppingCart, categories }} />
     </div>
   );
 }

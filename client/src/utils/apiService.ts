@@ -4,11 +4,10 @@ const productsUrlEnd = '/products';
 const categoriesUrlEnd = '/products/categories';
 const categoryUrlEnd = '/products/category';
 const shoppingCartUrlEnd = '/shoppingcart';
-const getHtml = { method: 'GET' };
 
 export async function getAllProducts() {
   try {
-    const response = await fetch(localBaseUrl + productsUrlEnd, getHtml);
+    const response = await fetch(localBaseUrl + productsUrlEnd);
     const result = await response.json();
     return result;
   } catch (e) {
@@ -18,7 +17,7 @@ export async function getAllProducts() {
 
 export async function getOneProduct(productId: number) {
   try {
-    const response = await fetch(localBaseUrl + productsUrlEnd + `/${productId}`, getHtml);
+    const response = await fetch(localBaseUrl + productsUrlEnd + `/${productId}`);
     const result = await response.json();
     return result;
   } catch (e) {
@@ -28,7 +27,7 @@ export async function getOneProduct(productId: number) {
 
 export async function getAllCategories() {
   try {
-    const response = await fetch(localBaseUrl + categoriesUrlEnd, getHtml);
+    const response = await fetch(localBaseUrl + categoriesUrlEnd);
     const result = await response.json();
     return result;
   } catch (e) {
@@ -38,7 +37,7 @@ export async function getAllCategories() {
 
 export async function getProductsOfCategory(category: string) {
   try {
-    const response = await fetch(localBaseUrl + categoryUrlEnd + `/${category}`, getHtml);
+    const response = await fetch(localBaseUrl + categoryUrlEnd + `/${category}`);
     const result = await response.json();
     return result;
   } catch (e) {
@@ -48,7 +47,7 @@ export async function getProductsOfCategory(category: string) {
 
 export async function getAllCartItems() {
   try {
-    const response = await fetch(localBaseUrl + shoppingCartUrlEnd, getHtml);
+    const response = await fetch(localBaseUrl + shoppingCartUrlEnd);
     const result = await response.json();
     return result;
   } catch (e) {

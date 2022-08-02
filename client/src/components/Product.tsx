@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Link, useOutletContext, useParams } from 'react-router-dom';
-import { addCartItem, getOneProduct } from '../utils/apiService';
+import { addCartItem, getOneProduct, modifyCartItem } from '../utils/apiService';
 import ProductStyling from './Product.css';
 
 export function Product() {
@@ -34,8 +34,13 @@ export function Product() {
 
   async function handleClick() {
     try {
-      await addCartItem({ productId: product.id, cartcount: 1 });
-      setShoppingCart(addToCart(product.id));
+      const added = addToCart(product.id);
+      if (added.cartcount === 1) {
+        await addCartItem(added);
+      } else {
+        await modifyCartItem(added);
+      }
+      setShoppingCart(added);
     } catch (e) {
       console.log(e.message);
     }
@@ -52,7 +57,7 @@ export function Product() {
         <img src={product.image} alt={product.title} />
       </div>
       <p>€{product.price}</p>
-      <Link onClick={() => handleClick()} to={'../shoppingcart'}>
+      <Link onClick={handleClick} to={'../shoppingcart'}>
         <button>Add to Cart</button>
       </Link>
       <p>{product.description}</p>
