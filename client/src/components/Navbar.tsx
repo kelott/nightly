@@ -5,6 +5,7 @@ import { slide as Menu } from 'react-burger-menu';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { ToggleDarkMode } from './ToggleDarkMode';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 export function Navbar({ darkState, setDarkState, categories, searchParams, setSearchParams }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,10 +19,11 @@ export function Navbar({ darkState, setDarkState, categories, searchParams, setS
       <div className="logo-bar">
         <div className="logo-left">
           <Menu onOpen={handleOpen} onClose={handleOpen} isOpen={isOpen}>
-            <Link onClick={handleOpen} id="home" className="menu-item" to={'/'}>
-              Home
-            </Link>
-            <hr />
+            <div className="home">
+              <Link onClick={handleOpen} id="home" className="menu-item" to={'/'}>
+                Home
+              </Link>
+            </div>
             {categories.map((entry) => (
               <Link onClick={handleOpen} key={entry.id} className="menu-item" to={`product/category/${entry.category}`}>
                 {entry.category}
@@ -33,7 +35,8 @@ export function Navbar({ darkState, setDarkState, categories, searchParams, setS
         </div>
         <div className="logo-right">
           <Link id="cart" to={'shoppingcart'}>
-            <button>Cart</button>
+            <ShoppingCartIcon />
+            {/* <button>Cart</button> */}
           </Link>
         </div>
       </div>

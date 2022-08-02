@@ -10,11 +10,17 @@ export function ToggleDarkMode({ darkState, setDarkState }) {
 
   return (
     <div
-    /* style={{
+      /* style={{
+        display: 'flex',
         margin: 'auto',
-        display: 'block',
         width: 'fit-content',
+        float: 'inline-start',
       }} */
+      style={{
+        display: 'flex',
+        paddingInline: '0.8em',
+        paddingBlock: '1.5em',
+      }}
     >
       <FormControlLabel control={<Switch checked={darkState.status} onChange={handleChange} /* color="primary" */ name="status" />} label="Dark mode" />
     </div>
