@@ -4,7 +4,7 @@ import { Link, useOutletContext, useSearchParams } from 'react-router-dom';
 import { ProductList } from './ProductList';
 
 export function Search({ products }) {
-  const { categories } = useOutletContext();
+  const { categories, darkState } = useOutletContext();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchTerm = searchParams.get('filter');
 
@@ -17,7 +17,7 @@ export function Search({ products }) {
   }
 
   return (
-    <div>
+    <div className={darkState.status ? 'search-results-dark' : 'search-results'}>
       <span>Filter: {searchTerm}</span>
       <button onClick={() => setSearchParams('')}>clear</button>
       {categoryMatch().length ? (
@@ -29,10 +29,10 @@ export function Search({ products }) {
               </li>
             ))}
           </ul>
-          <ProductList products={productMatch()} />
+          <ProductList products={productMatch()} darkState={darkState} />
         </>
       ) : (
-        <ProductList products={productMatch()} />
+        <ProductList products={productMatch()} darkState={darkState} />
       )}
     </div>
   );

@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useOutletContext, useParams } from 'react-router-dom';
 import { getProductsOfCategory } from '../utils/apiService';
 import { ProductList } from './ProductList';
 
@@ -9,6 +9,7 @@ export function Category() {
   const [productsOfCategory, setProductsOfCategory] = useState([]);
   const params = useParams();
   const location = useLocation();
+  const { darkState } = useOutletContext();
 
   useEffect(() => {
     (async () => {
@@ -24,7 +25,7 @@ export function Category() {
 
   return (
     <div>
-      <ProductList products={productsOfCategory} />
+      <ProductList products={productsOfCategory} darkState={darkState} />
     </div>
   );
 }

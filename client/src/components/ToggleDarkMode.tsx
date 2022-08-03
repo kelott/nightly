@@ -16,7 +16,7 @@ export function ToggleDarkMode({ darkState, setDarkState }) {
         paddingBlock: '1.5em',
       }}
     >
-      <FormControlLabel control={<Switch checked={darkState.status} onChange={handleChange} /* color="primary" */ name="status" />} label="Dark mode" />
+      <FormControlLabel sx={darkState.status ? { color: 'white' } : { color: 'black' }} control={<Switch checked={darkState.status} onChange={handleChange} name="status" />} label="Dark mode" />
     </div>
   );
 }

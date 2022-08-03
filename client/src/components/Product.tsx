@@ -9,7 +9,7 @@ import { StarRating } from './StarRating';
 export function Product() {
   const [product, setProduct] = useState({});
   const [rating, setRating] = useState({});
-  const { shoppingCart, setShoppingCart } = useOutletContext();
+  const { shoppingCart, setShoppingCart, darkState } = useOutletContext();
   const params = useParams();
 
   useEffect(() => {
@@ -48,8 +48,8 @@ export function Product() {
   }
 
   return (
-    <div style={ProductStyling} className="product">
-      <div className="top block">
+    <div style={ProductStyling} className={darkState.status ? 'product-dark' : 'product'}>
+      <div className={darkState.status ? 'block-dark top' : 'block top'}>
         <div className="rating">
           <StarRating rate={rating.rate} />
           <span>{rating.count}</span>
@@ -57,7 +57,7 @@ export function Product() {
         <p>{product.title}</p>
         <img src={product.image} alt={product.title} />
       </div>
-      <div className="block last">
+      <div className={darkState.status ? 'block-dark last' : 'block last'}>
         <p>€{product.price}</p>
         <Link onClick={handleClick} to={'../shoppingcart'}>
           <button>Add to Cart</button>

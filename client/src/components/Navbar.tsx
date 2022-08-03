@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import NavbarStyle from './Navbar.css';
+import style from './Navbar.css';
 import { slide as Menu } from 'react-burger-menu';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
@@ -16,21 +16,23 @@ export function Navbar({ darkState, setDarkState, categories, searchParams, setS
   }
 
   return (
-    <div style={NavbarStyle} className="navbar">
+    <div style={style} className="navbar">
       <div className="logo-bar">
         <div className="logo-left">
           <Menu onOpen={handleOpen} onClose={handleOpen} isOpen={isOpen}>
-            <div className="home">
+            <div className={darkState.status ? 'home-dark' : 'home'}>
               <Link onClick={handleOpen} id="home" className="menu-item" to={'/'}>
                 Home
               </Link>
             </div>
-            {categories.map((entry) => (
-              <Link onClick={handleOpen} key={entry.id} className="menu-item" to={`product/category/${entry.category}`}>
-                {entry.category}
-              </Link>
-            ))}
-            <ToggleDarkMode darkState={darkState} setDarkState={setDarkState} />
+            <div className={darkState.status ? 'b-menu-dark' : 'b-menu'}>
+              {categories.map((entry) => (
+                <Link onClick={handleOpen} key={entry.id} className="menu-item" to={`product/category/${entry.category}`}>
+                  {entry.category}
+                </Link>
+              ))}
+              <ToggleDarkMode darkState={darkState} setDarkState={setDarkState} />
+            </div>
           </Menu>
           {/* Todo: Insert logo here */}
         </div>
@@ -47,6 +49,7 @@ export function Navbar({ darkState, setDarkState, categories, searchParams, setS
         }}
       >
         <input
+          className={darkState.status ? 'search-input-dark' : 'search-input'}
           placeholder="Search Nightly"
           autoComplete="off"
           value={searchParams.get('filter') || ''}

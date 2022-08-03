@@ -3,3 +3,11 @@
   padding-block: 6px;
   margin: 0;
 }
+
+.product-list-dark {
+  background-color: #1b2530;
+  min-height: 100vh;
+  padding-inline: 4px;
+  padding-block: 6px;
+  margin: 0;
+}

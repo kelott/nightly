@@ -10,7 +10,6 @@ import { Home } from './components/Home';
 import { Product } from './components/Product';
 import { Category } from './components/Category';
 import { ShoppingCart } from './components/ShoppingCart';
-import HomeStyle from './components/Home.css';
 import AppStyle from './App.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
@@ -18,7 +17,7 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App style={AppStyle} />}>
-        <Route index element={<Home style={HomeStyle} />}></Route>
+        <Route index element={<Home />}></Route>
         <Route path="product/:productId" element={<Product />}></Route>
         <Route path="product/category/:categoryName" element={<Category />}></Route>
         <Route path="shoppingcart" element={<ShoppingCart />}></Route>

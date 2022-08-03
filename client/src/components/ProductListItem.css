@@ -21,6 +21,11 @@
   padding-left: 15px;
 }
 
+.p-description-dark {
+  padding-left: 15px;
+  color: white;
+}
+
 .item-rating {
   display: flex;
   flex-direction: row;

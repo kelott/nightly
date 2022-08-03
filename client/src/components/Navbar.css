@@ -21,8 +21,35 @@
   height: 140px;
 }
 
+.home-dark {
+  background: #1b2530;
+  color: #ffffff;
+  height: 140px;
+}
+
+.b-menu {
+  height: 50vh;
+  display: inline-block;
+  color: black;
+  flex-direction: column;
+  padding: 0.8em;
+}
+
+.b-menu-dark {
+  display: flex;
+  flex-direction: column;
+  background: #1b2530;
+  padding: 0.8em;
+  padding-block-end: 50vh;
+}
+
+.b-menu-dark a {
+  color: white;
+}
+
 #home {
-  top: 100px;
+  left: 13px;
+  top: 80px;
   width: 100%;
   position: relative;
   color: #ffffff;
@@ -33,6 +60,15 @@ input {
   border: none;
   border-radius: 5px;
   font-family: 'Amazon Ember', Arial, sans-serif;
+}
+
+.search-input-dark ::placeholder {
+  color: white;
+}
+
+.search-input-dark {
+  background-color: #1b2530;
+  color: white;
 }
 
 form {
@@ -51,9 +87,14 @@ form {
   border-radius: 5px;
 }
 
-/* .logo-left {
-  float: left;
-} */
+.search-btn-dark {
+  background-color: orangered;
+  display: flex;
+  width: 60px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
 
 /* Position and sizing of burger button */
 .bm-burger-button {
@@ -99,7 +140,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* General sidebar styles */
 .bm-menu {
   background: #ffffff;
-  /* padding: 2.5em 1.5em 0; */
   font-size: 1.15em;
 }
 
@@ -111,7 +151,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Wrapper for item list */
 .bm-item-list {
   color: black;
-  /* padding: 0.8em; */
+  overflow: hidden;
 }
 
 /* Individual item */
@@ -121,6 +161,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .menu-item {
+  display: flex;
   padding: 0.8em;
 }
 

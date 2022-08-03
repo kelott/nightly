@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import ProductListItemStyle from './ProductListItem.css';
 import { StarRating } from './StarRating';
 
-export function ProductListItem({ product }) {
+export function ProductListItem({ product, darkState }) {
   const [rating, setRating] = useState({});
   useEffect(() => {
     setRating({ rate: product.rate, count: product.count });
@@ -16,7 +16,7 @@ export function ProductListItem({ product }) {
       <div className="product-img-container">
         <img className="product-img" src={product.image} alt="product" />
       </div>
-      <div className="p-description">
+      <div className={darkState.status ? 'p-description-dark' : 'p-description'}>
         <p>{product.title}</p>
         <div className="item-rating">
           <StarRating rate={rating.rate} />

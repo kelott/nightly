@@ -10,7 +10,7 @@ function App() {
   const [categories, setCategories] = useState([]);
   const [shoppingCart, setShoppingCart] = useState({});
   const [searchParams, setSearchParams] = useSearchParams();
-  const [darkState, setDarkState] = useState({ status: true });
+  const [darkState, setDarkState] = useState({ status: false });
 
   function prepCart(items) {
     const cart = {};
