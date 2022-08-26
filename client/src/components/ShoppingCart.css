@@ -5,3 +5,25 @@
   font-family: 'Amazon Ember', Arial, sans-serif;
   font-size: 20px;
 }
+.shoppingcart form {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  width: 120px;
+}
+.shoppingcart input {
+  font-size: 16px;
+  text-align: center;
+}
+.shoppingcart button {
+  border-width: 2px;
+  border-color: rgb(255, 255, 255);
+  background-color: lightgrey;
+  width: 80px;
+}
+.plus-button {
+  border-radius: 0 10px 10px 0;
+}
+.minus-button {
+  border-radius: 10px 0 0 10px;
+}

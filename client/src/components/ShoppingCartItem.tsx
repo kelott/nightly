@@ -4,7 +4,12 @@ import { useEffect, useState } from 'react';
 import { deleteCartItem, modifyCartItem } from '../utils/apiService';
 import sciStyle from './ShoppingCartItem.css';
 
-export function ShoppingCartItem({ cartItem, itemId, shoppingCart, setShoppingCart }) {
+export function ShoppingCartItem({
+  cartItem,
+  itemId,
+  shoppingCart,
+  setShoppingCart,
+}) {
   const [inputVal, setInputVal] = useState(1);
 
   useEffect(() => {
@@ -15,7 +20,10 @@ export function ShoppingCartItem({ cartItem, itemId, shoppingCart, setShoppingCa
     e.preventDefault();
     const cartItem = shoppingCart[productId];
     try {
-      setShoppingCart({ ...shoppingCart, [productId]: { ...cartItem, cartcount: (cartItem.cartcount += 1) } });
+      setShoppingCart({
+        ...shoppingCart,
+        [productId]: { ...cartItem, cartcount: (cartItem.cartcount += 1) },
+      });
       await modifyCartItem({ productId, cartcount: cartItem.cartcount });
     } catch (e) {
       console.log(e.message);
@@ -32,7 +40,10 @@ export function ShoppingCartItem({ cartItem, itemId, shoppingCart, setShoppingCa
         delete updatedCart[productId];
         setShoppingCart(updatedCart);
       } else {
-        setShoppingCart({ ...shoppingCart, [productId]: { ...cartItem, cartcount: (cartItem.cartcount -= 1) } });
+        setShoppingCart({
+          ...shoppingCart,
+          [productId]: { ...cartItem, cartcount: (cartItem.cartcount -= 1) },
+        });
         await modifyCartItem({ productId, cartcount: cartItem.cartcount });
       }
     } catch (e) {
@@ -42,22 +53,37 @@ export function ShoppingCartItem({ cartItem, itemId, shoppingCart, setShoppingCa
 
   return (
     <div>
-      <div style={sciStyle} className="cart-item">
-        <div className="cart-image-container">
-          <img id="cart-image" src={cartItem.image} alt={cartItem.title} />
+      <div style={sciStyle} className='cart-item'>
+        <div className='cart-image-container'>
+          <img id='cart-image' src={cartItem.image} alt={cartItem.title} />
         </div>
-        <div className="cart-text">
+        <div className='cart-text'>
           <p>{cartItem.title}</p>
           <p>€{cartItem.price}</p>
         </div>
       </div>
       <form>
-        <button onClick={(e) => handleClickPlus(e, itemId)} name="plus">
-          +
-        </button>
-        <input name="items" className="inputs" defaultValue={inputVal} key={inputVal} type="number" readOnly={true}></input>
-        <button onClick={(e) => handleClickMinus(e, itemId)} name="minus">
+        <button
+          className='minus-button'
+          onClick={(e) => handleClickMinus(e, itemId)}
+          name='minus'
+        >
           -
+        </button>
+        <input
+          name='items'
+          className='inputs'
+          defaultValue={inputVal}
+          key={inputVal}
+          type='number'
+          readOnly={true}
+        ></input>
+        <button
+          className='plus-button'
+          onClick={(e) => handleClickPlus(e, itemId)}
+          name='plus'
+        >
+          +
         </button>
       </form>
     </div>
