@@ -4,14 +4,6 @@
 
 Nightly is an e-commerce site built for mobile. It is inspired by the Amazon.com mobile site, but unlike Amazon, Nightly has dark-mode.
 
-## Screenshots
-
-<span align="center">
-  <img src="assets\burger-menu.png" />
-  <img src="assets\product-page.png" />
-  <img src="assets\shopping-cart.png" />
-</span>
-
 ## Getting started
 
 1. Clone the repo
