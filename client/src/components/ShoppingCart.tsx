@@ -11,13 +11,17 @@ export function ShoppingCart() {
   const [cartProduct, setCartProduct] = useState({});
 
   function generateCartProducts() {
-    const cartProducts = {};
+    const cartProducts = { sum: 0 };
     products
       .filter((product) => product.id in shoppingCart)
       .map((item) => {
         const { id, ...rest } = item;
         const currentItem = shoppingCart[id];
-        return (cartProducts[id] = { ...rest, cartcount: currentItem.cartcount });
+        cartProducts.sum += currentItem.cartcount * rest.price;
+        return (cartProducts[id] = {
+          ...rest,
+          cartcount: currentItem.cartcount,
+        });
       });
     return cartProducts;
   }
@@ -28,17 +32,24 @@ export function ShoppingCart() {
   }, [shoppingCart]);
 
   return (
-    <div style={ShoppingCartStyle} className="shoppingcart">
-      <span>Shopping cart</span>
+    <div style={ShoppingCartStyle} className='shoppingcart'>
+      <span>Sum €{cartProduct.sum}</span>
       {Object.keys(shoppingCart).length === 0 ? (
         <p>Shopping cart is empty</p>
       ) : (
         <ul>
-          {Object.keys(cartProduct).map((key) => (
-            <li key={key}>
-              <ShoppingCartItem cartItem={cartProduct[key]} itemId={key} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} />
-            </li>
-          ))}
+          {Object.keys(cartProduct)
+            .filter((prop) => prop !== 'sum')
+            .map((key) => (
+              <li key={key}>
+                <ShoppingCartItem
+                  cartItem={cartProduct[key]}
+                  itemId={key}
+                  shoppingCart={shoppingCart}
+                  setShoppingCart={setShoppingCart}
+                />
+              </li>
+            ))}
         </ul>
       )}
     </div>
