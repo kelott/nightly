@@ -33,24 +33,26 @@ export function ShoppingCart() {
 
   return (
     <div style={ShoppingCartStyle} className='shoppingcart'>
-      <span>Sum €{cartProduct.sum}</span>
       {Object.keys(shoppingCart).length === 0 ? (
         <p>Shopping cart is empty</p>
       ) : (
-        <ul>
-          {Object.keys(cartProduct)
-            .filter((prop) => prop !== 'sum')
-            .map((key) => (
-              <li key={key}>
-                <ShoppingCartItem
-                  cartItem={cartProduct[key]}
-                  itemId={key}
-                  shoppingCart={shoppingCart}
-                  setShoppingCart={setShoppingCart}
-                />
-              </li>
-            ))}
-        </ul>
+        <>
+          <span>Sum €{cartProduct.sum}</span>
+          <ul>
+            {Object.keys(cartProduct)
+              .filter((prop) => prop !== 'sum')
+              .map((key) => (
+                <li key={key}>
+                  <ShoppingCartItem
+                    cartItem={cartProduct[key]}
+                    itemId={key}
+                    shoppingCart={shoppingCart}
+                    setShoppingCart={setShoppingCart}
+                  />
+                </li>
+              ))}
+          </ul>
+        </>
       )}
     </div>
   );
