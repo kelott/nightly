@@ -3,6 +3,10 @@
   position: relative;
 }
 
+.logo-center img {
+  height: 40px;
+}
+
 .logo-bar {
   display: flex;
   position: relative;
