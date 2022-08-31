@@ -1,11 +1,6 @@
 # Nightly
 
 <p align="center">
-  <style>
-    img {
-      height: 300px;
-    }
-  </style>
   <img src="assets\nightly-logo-round.png" />
 </p>
 
