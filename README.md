@@ -1,8 +1,19 @@
+# Nightly
+
 <p align="center">
-  <img src="assets\index-page.png" />
+  <style>
+    img {
+      height: 300px;
+    }
+  </style>
+  <img src="assets\nightly-logo-round.png" />
 </p>
 
 Nightly is an e-commerce site built for mobile. It is inspired by the Amazon.com mobile site, but unlike Amazon, Nightly has dark-mode.
+
+<p align="center">
+  <img src="assets\index-page.png" />
+</p>
 
 ## Getting started
 
