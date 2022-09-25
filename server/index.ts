@@ -8,7 +8,7 @@ const serve = require('koa-static');
 
 const sequelize = require('./models/index.ts');
 const router = require('./router.ts');
-const { HOST, PORT } = require('./utils/config.ts');
+const { host, port } = require('./utils/config.ts');
 
 app.use(
   cors({
@@ -16,15 +16,15 @@ app.use(
   })
 );
 app.use(bodyParser());
-// Todo: Serve static files
 app.use(router.routes());
+app.use(serve('../client/build/'));
 
 (async () => {
   try {
     sequelize.sync();
     console.log('Connected to database');
-    app.listen(PORT, () => {
-      console.log(`Listening on ${HOST}:${PORT}`);
+    app.listen(port, host, () => {
+      console.log(`Listening on http://${host}:${port}`);
     });
   } catch (e) {
     console.log('Database connection failed', e);

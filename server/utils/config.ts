@@ -1,8 +1,8 @@
 // @ts-nocheck
 
 const config = {
-  PORT: 4000,
-  HOST: 'http://localhost',
+  port: 80,
+  host: '0.0.0.0',
 };
 
 module.exports = config;

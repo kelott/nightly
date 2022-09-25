@@ -8,5 +8,13 @@ export function Home() {
   const { products, darkState } = useOutletContext();
   const [searchParams] = useSearchParams();
 
-  return <div>{searchParams.get('filter') ? <Search products={products} /> : <ProductList products={products} darkState={darkState} />}</div>;
+  return (
+    <div>
+      {searchParams.get('filter') ? (
+        <Search products={products} />
+      ) : (
+        <ProductList products={products} darkState={darkState} />
+      )}
+    </div>
+  );
 }
